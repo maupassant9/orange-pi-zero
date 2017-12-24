@@ -37,7 +37,3 @@ JNIEXPORT void JNICALL Java_LedController_cfgOutput
     pinMode(addr, OUTPUT);
   }
 
-#ifdef __cplusplus
-}
-#endif
-#endif
