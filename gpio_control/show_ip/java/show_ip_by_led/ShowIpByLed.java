@@ -79,9 +79,8 @@ public class ShowIpByLed {
 
     //get wlan0 ip
     interfaceName = "wlan0";
-    NetworkInterface networkInterface = NetworkInterface.getByName(interfaceName);
-    Enumeration<InetAddress> inetAddress = networkInterface.getInetAddresses();
-    InetAddress currentAddress;
+    networkInterface = NetworkInterface.getByName(interfaceName);
+    inetAddress = networkInterface.getInetAddresses();
 
     while(inetAddress.hasMoreElements())
     {
