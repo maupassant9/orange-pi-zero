@@ -1,0 +1,2 @@
+javac -classpath '.:classes:*:classes:/opt/pi4j/lib/*' -d . PinPrint.java
+sudo java  -Dpi4j.linking=dynamic -classpath '.:classes:*:classes:/opt/pi4j/lib/*' PinPrint
