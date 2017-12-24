@@ -12,7 +12,7 @@
     public LedController(int gpio_addr){
         this.gpio_addr = gpio_addr;
         //load the led c module
-        System.loadLibrary("LedController.so");
+        System.loadLibrary("/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/LedController.so");
         //led_ctr_c = new LedCtrInC(this.gpio_addr);
 
         //set the gpio to output
