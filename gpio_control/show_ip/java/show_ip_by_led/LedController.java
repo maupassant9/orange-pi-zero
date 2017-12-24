@@ -12,7 +12,7 @@
     public LedController(int gpio_addr){
         this.gpio_addr = gpio_addr;
         //load the led c module
-        //System.loadLibrary("LedCtrInC");
+        System.loadLibrary("LedController");
         //led_ctr_c = new LedCtrInC(this.gpio_addr);
 
         //set the gpio to output
