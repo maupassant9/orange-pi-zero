@@ -6,6 +6,8 @@ that connects with a LED.
 javac ShowIpByLed.java
 (*) The command used to run java program
  sudo java -Djava.library.path=/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/ ShowIpByLed
+ or simply:
+ sudo java ShowIpByLed
 (*) The command used to compile the c program library
  gcc -shared -I /usr/lib/jvm/java-8-openjdk-armhf/include -I /usr/lib/jvm/java-8-openjdk-armhf/include/linux/ -o ./LedController.so LedController.c -lwiringPi -pthread
 
