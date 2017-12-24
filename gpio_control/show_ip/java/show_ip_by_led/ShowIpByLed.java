@@ -35,8 +35,8 @@ public class ShowIpByLed {
       ledShowNum(addr);
       Thread.sleep(2000);
     }
-
   }
+
 
   private void ledShowNum(int num) throws InterruptedException{
     for(int i = 0; i < num; i++){
@@ -76,6 +76,26 @@ public class ShowIpByLed {
         }
         //currentAddress = inetAddress.nextElement();
     }
+
+    //get wlan0 ip
+    interfaceName = "wlan0"
+    NetworkInterface networkInterface = NetworkInterface.getByName(interfaceName);
+    Enumeration<InetAddress> inetAddress = networkInterface.getInetAddresses();
+    InetAddress currentAddress;
+
+    while(inetAddress.hasMoreElements())
+    {
+        currentAddress = inetAddress.nextElement();
+        //if it is ipv4, get the ip
+        if(currentAddress instanceof Inet4Address && !currentAddress.isLoopbackAddress())
+        {
+            ip = currentAddress.toString();
+            ip = ip.substring(ip.lastIndexOf('.')+1);
+            ips.add(Integer.parseInt(ip));
+            break;
+        }
+        //currentAddress = inetAddress.nextElement();
+    }
     return ips;
   }
 
@@ -83,8 +103,9 @@ public class ShowIpByLed {
   //main function
   public static void main(String args[]) throws SocketException, InterruptedException{
     ShowIpByLed displayer = new ShowIpByLed();
-    display.show();
-    displayer.test();
+    displayer.show();
+    //displayer.ledShowNum(25);
+    //displayer.test();
   }
 
 }
