@@ -4,7 +4,6 @@
  public class LedController{
 
     private int gpio_addr;
-    private LedCtrInC led_ctr_c;
 
     public native void setHigh(int gpio_addr);
     public native void setLow(int gpio_addr);

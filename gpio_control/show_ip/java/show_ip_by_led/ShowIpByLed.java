@@ -3,7 +3,7 @@ import java.net.*;
 import java.lang.String;
 import java.util.*;
 import java.net.SocketException;
-import LedController
+import LedController;
 
 public class ShowIpByLed {
 
@@ -14,17 +14,17 @@ public class ShowIpByLed {
   {
     this.led_addr = led_addr;
     led_ctr = new LedController(led_addr);
-    led_ctr.setAsOutput(led_addr);
+    led_ctr.setAsOutput();
   }
 
   public ShowIpByLed()
   {
     led_addr = 30;
     led_ctr = new LedController(30);
-    led_ctr.setAsOutput(30);
+    led_ctr.setAsOutput();
   }
 
-  public void show()
+  public void show() throws SocketException, InterruptedException
   {
     //get the ip addr
     ArrayList<Integer> ips = getIps();
@@ -37,11 +37,11 @@ public class ShowIpByLed {
 
   }
 
-  private void ledShowNum(int num){
+  private void ledShowNum(int num) throws InterruptedException{
     for(int i = 0; i < num; i++){
       led_ctr.high();
       Thread.sleep(500);
-      led_str.low();
+      led_ctr.low();
       Thread.sleep(500);
     }
   }
@@ -66,7 +66,7 @@ public class ShowIpByLed {
         {
             ip = currentAddress.toString();
             ip = ip.substring(ip.lastIndexOf('.')+1);
-            ips.add(Integer.parse(ip));
+            ips.add(Integer.parseInt(ip));
             break;
         }
         //currentAddress = inetAddress.nextElement();
