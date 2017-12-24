@@ -31,6 +31,7 @@ public class ShowIpByLed {
 
     //show the led
     for (Integer addr: ips){
+      System.out.println("IP:"+addr);
       ledShowNum(addr);
       Thread.sleep(2000);
     }
@@ -82,7 +83,7 @@ public class ShowIpByLed {
   //main function
   public static void main(String args[]) throws SocketException, InterruptedException{
     ShowIpByLed displayer = new ShowIpByLed();
-
+    display.show();
     displayer.test();
   }
 
