@@ -60,11 +60,13 @@ public class ShowIpByLed {
     String interfaceName = "eth0", ip;
     //get eth0 ip
     NetworkInterface networkInterface = NetworkInterface.getByName(interfaceName);
-    Enumeration<InetAddress> inetAddress = networkInterface.getInetAddresses();
+    Enumeration<InetAddress> inetAddress;
     InetAddress currentAddress;
 
-    while(inetAddress.hasMoreElements())
-    {
+    try {
+      inetAddress = networkInterface.getInetAddresses();
+      while(inetAddress.hasMoreElements())
+      {
         currentAddress = inetAddress.nextElement();
         //if it is ipv4, get the ip
         if(currentAddress instanceof Inet4Address && !currentAddress.isLoopbackAddress())
@@ -75,25 +77,33 @@ public class ShowIpByLed {
             break;
         }
         //currentAddress = inetAddress.nextElement();
+      }
+    }catch (NullPointerException e){
+      //do nothing
     }
+    
 
     //get wlan0 ip
     interfaceName = "wlan0";
     networkInterface = NetworkInterface.getByName(interfaceName);
-    inetAddress = networkInterface.getInetAddresses();
-
-    while(inetAddress.hasMoreElements())
+    try {
+      inetAddress = networkInterface.getInetAddresses();
+      while(inetAddress.hasMoreElements())
+      {
+          currentAddress = inetAddress.nextElement();
+          //if it is ipv4, get the ip
+          if(currentAddress instanceof Inet4Address && !currentAddress.isLoopbackAddress())
+          {
+              ip = currentAddress.toString();
+              ip = ip.substring(ip.lastIndexOf('.')+1);
+              ips.add(Integer.parseInt(ip));
+              break;
+          }
+          //currentAddress = inetAddress.nextElement();
+      }
+    }catch(NullPointerException e)
     {
-        currentAddress = inetAddress.nextElement();
-        //if it is ipv4, get the ip
-        if(currentAddress instanceof Inet4Address && !currentAddress.isLoopbackAddress())
-        {
-            ip = currentAddress.toString();
-            ip = ip.substring(ip.lastIndexOf('.')+1);
-            ips.add(Integer.parseInt(ip));
-            break;
-        }
-        //currentAddress = inetAddress.nextElement();
+      //do nothning here
     }
     return ips;
   }
@@ -102,6 +112,7 @@ public class ShowIpByLed {
   //main function
   public static void main(String args[]) throws SocketException, InterruptedException{
     ShowIpByLed displayer = new ShowIpByLed();
+    //System.load("/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/LedController.so");
     displayer.show();
     //displayer.ledShowNum(25);
     //displayer.test();
