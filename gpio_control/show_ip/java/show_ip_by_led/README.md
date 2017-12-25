@@ -1,4 +1,4 @@
-This is an example project of using JNI and WiringOP to control GPIO.
+This is an example project using JNI and WiringOP to control GPIO.
 The program will read the last ipv4 address number and show the number by GPIO pin
 that connects with a LED.
 
