@@ -45,6 +45,10 @@
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+
+# Java Class file
+*.class
+
 .tmp_versions/
 modules.order
 Module.symvers
