@@ -113,8 +113,8 @@ public class ShowIpByLed {
   public static void main(String args[]) throws SocketException, InterruptedException{
     ShowIpByLed displayer = new ShowIpByLed();
     //System.load("/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/LedController.so");
-    displayer.show();
-    //displayer.ledShowNum(25);
+    //displayer.show();
+    displayer.ledShowNum(25);
     //displayer.test();
   }
 
