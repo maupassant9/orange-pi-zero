@@ -16,7 +16,7 @@
 /********************************************
  * Macro
  ********************************************/
- #define WAIT_TIME 0x1000000
+ #define WAIT_TIME 20
  
  #define OE_PIN 1
  #define SER_PIN 0

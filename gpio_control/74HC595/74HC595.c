@@ -12,7 +12,8 @@
   * Include
   ********************************************/
   #include <wiringPi.h>
-  
+  #include <time.h>
+    
   extern hc595_handle_t handle;
 
   static void Hc595GpioWrite(unsigned char pin_number, unsigned char val);
@@ -132,3 +133,20 @@
         Hc595GpiosWriteAll(handle,0x0c);
         Hc595GpiosWriteAll(handle,0x08);        
     }   
+
+    /*------------------------------------------------
+     * Hc595Wait();
+     * Wait for a while
+     * Check the waveform in /waveform/write.png
+     * Paras:
+     *  >> unsigned char: the miniseconds that needs to
+     *  wait
+     * Return:
+     *  >> 
+     * Change Records:
+     *  >> (30/Dec/2017): Create the function
+     *----------------------------------------------*/
+     void Hc595Wait(unsigned char mini_seg)
+     {
+     	usleep((long)mini_seg*1000);
+     }
