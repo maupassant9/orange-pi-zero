@@ -13,7 +13,12 @@
   ********************************************/
   #include <wiringPi.h>
   
-  
+  extern hc595_handle_t handle;
+
+  static void Hc595GpioWrite(unsigned char pin_number, unsigned char val);
+  static void Hc595GpiosWriteAll(hc595_handle_t * handle, unsigned char val);
+
+
   /*------------------------------------------------
    * Drv595Init();
    * Initialize the 74HC595 Device.
@@ -24,16 +29,33 @@
    * Change Records:
    *  >> (29/Dec/2017): Create the function
    *----------------------------------------------*/
-   void Drv595Init(void)
+   void DrvHc595Init(hc595_handle_t *handle)
    {
-       //Set the 74HC595 into default mode
-       
+       unsigned char cnt, ser = DEFAULT_VALUE;
+
+        handle.pins_number[0] = SER_PIN;
+        handle.pins_number[1] = SRCLK_PIN;
+        handle.pins_number[2] = RCLK_PIN;
+        handle.pins_number[3] = SRCLR_PIN;
+        handle.pins_number[4] = OE_PIN;
+
+        wiringPiSetup();
+        for(cnt = 0; cnt < 5; cnt++){
+            pinMode(handle.pins_number[cnt],OUTPUT);
+        }
+       //Reset the 74HC595 into default mode
+        Hc595GpiosWriteAll(handle,0x18|ser);
+        Hc595GpiosWriteAll(handle,0x18|ser);
+        Hc595GpiosWriteAll(handle,0x10|ser);
+        Hc595GpiosWriteAll(handle,0x0c|ser);
+        #if DEFAULT_VALUE = HIGH_VOLT
+        DrvHc595Write(handle,0xff);
+        #endif
    }
-   
    
     /*------------------------------------------------
     * Hc595GpiosWriteAll();
-    * Write to all the GPIOs
+    * Write one bit to all the GPIOs
     * Paras:
     *  >> unsigned char: Set all the gpios state
     *           Bit0: GPIO_SER
@@ -72,13 +94,23 @@
    static void Hc595GpioWrite(unsigned char pin_number,
                             unsigned char val)
    {
-       
+       if(val == 1){
+           digitalWrite(pin_number, HIGH);
+       } else {
+           digitalWrite(pin_number,LOW);
+       }
    }
    
    
     /*------------------------------------------------
     * DrvHc595Write();
-    * Reset Hc595, write to the default value
+    * Write serial data (8 bits) to Hc595.
+    *           Bit0: GPIO_SER
+    *           Bit1: GPIO_SRCLK
+    *           Bit2: GPIO_RCLK
+    *           Bit3: GPIO_SRCLR
+    *           Bit4: GPIO_OE
+    * Check the waveform in /waveform/write.png
     * Paras:
     *  >> unsigned char: a valor write to gpio
     
@@ -87,13 +119,16 @@
     * Change Records:
     *  >> (29/Dec/2017): Create the function
     *----------------------------------------------*/
-    static void DrvHc595Write(hc595_handle_t * handle,
+    void DrvHc595Write(hc595_handle_t * handle,
                              unsigned char val)
     {
-        Hc595GpiosWriteAll(handle,0x08);
-        Hc595GpiosWriteAll(handle,0x28);
-        Hc595GpiosWriteAll(handle,0x09);
-        Hc595GpiosWriteAll(handle,0x29);
-        Hc595GpioWriteAll(handle,)
-        
+        unsigned char ser, cnt;
+        for(cnt = 0; cnt < 8; cnt++){
+            ser = val&0x01;
+            Hc595GpiosWriteAll(handle,0x08|ser);
+            Hc595GpiosWriteAll(handle,0x0a|ser);
+            val = val >> 1;
+        }
+        Hc595GpiosWriteAll(handle,0x0c);
+        Hc595GpiosWriteAll(handle,0x08);        
     }   

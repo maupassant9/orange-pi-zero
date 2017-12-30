@@ -18,16 +18,16 @@
  ********************************************/
  #define WAIT_TIME 0x1000000
  
- #define OE_PIN
- #define SER_PIN
- #define SRCLK_PIN
- #define SRCLR_PIN
- #define RCLK_PIN
+ #define OE_PIN 1
+ #define SER_PIN 0
+ #define SRCLK_PIN 5
+ #define SRCLR_PIN 6
+ #define RCLK_PIN 4
  
  //Define the default value of 74HC545 output
- #define HIGH 1
- #define LOW 0
- #define DEFAULT_VALUE HIGH
+ #define HIGH_VOLT 1
+ #define LOW_VOLT 0
+ #define DEFAULT_VALUE LOW_VOLT
  
  
  //74HC545 handle
@@ -44,3 +44,11 @@
      
      
  } hc595_handle_t;
+
+ hc595_handle_t handle;
+
+
+void DrvHc595Init(hc595_handle_t *handle);
+void DrvHc595Write(hc595_handle_t * handle,unsigned char val);
+
+
