@@ -45,8 +45,6 @@
      
  } hc595_handle_t;
 
- hc595_handle_t handle;
-
 
 void DrvHc595Init(hc595_handle_t *handle);
 void DrvHc595Write(hc595_handle_t * handle,unsigned char val);
