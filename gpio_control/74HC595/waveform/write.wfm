@@ -1,0 +1,7 @@
+{signal: [
+  {name: 'SER', wave: 'x========xx',data: 'BIT0 BIT1 BIT2 BIT3 BIT4 BIT5 BIT6 BIT7'},
+  {name: 'SRCLK', wave: 'l..P.......l..',period: 0.5},
+  {name: 'RCLK', wave: 'l........Pl'},
+  {name: 'SRCLR', wave: 'h..........'},
+  {name: 'OE', wave: 'l..........'}
+]}

@@ -1,0 +1,7 @@
+{signal: [
+  {name: 'SER', wave: 'l....'},
+  {name: 'SRCLK', wave: 'l....'},
+  {name: 'RCLK', wave: 'l..Pl....',period:0.5},
+  {name: 'SRCLR', wave: 'hnh..'},
+  {name: 'OE', wave: 'l....'}
+]}

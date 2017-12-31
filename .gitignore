@@ -49,6 +49,11 @@
 # Java Class file
 *.class
 
+# Pictures
+*.png
+*.jpg
+*.gif
+
 .tmp_versions/
 modules.order
 Module.symvers
