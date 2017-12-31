@@ -149,6 +149,24 @@
         Hc595GpiosWriteAll(handle,0x0c);
         Hc595GpiosWriteAll(handle,0x08);        
     }   
+    
+    /*------------------------------------------------
+    * DrvHc595Clear();
+    * Clear the display.
+    * Paras:
+    *  >> hc595_handle_t: a handle for 74HC595 dev
+    * Return:
+    *  >> 
+    * Change Records:
+    *  >> (31/Dec/2017): Create the function
+    *----------------------------------------------*/
+    void DrvHc595Clear(hc595_handle_t * handle){
+        #if DEFAULT_VALUE == HIGH_VOLT
+        DrvHc595Write(handle,0xff);
+        #elif DEFAULT_VALUE == LOW_VOLT
+        DrvHc595Write(handle,0x00);
+        #endif
+    }
 
     /*------------------------------------------------
      * Hc595Wait();
@@ -162,7 +180,7 @@
      * Change Records:
      *  >> (30/Dec/2017): Create the function
      *----------------------------------------------*/
-     static  void Hc595Wait(unsigned char mini_seg)
+     static void Hc595Wait(unsigned char mini_seg)
      {
      	usleep((long)mini_seg*1000);
      }

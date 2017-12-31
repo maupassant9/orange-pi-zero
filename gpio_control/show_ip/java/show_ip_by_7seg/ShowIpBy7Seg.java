@@ -40,14 +40,11 @@ public class ShowIpBy7Seg {
 
   private void segShowIp(String ip) throws InterruptedException{
     String[] addrs = ip.split("\\.");
-    System.out.println("=======");
-    System.out.println(addrs.length);
  
     for (String addr: addrs){
       if(addr.startsWith("/")){
         addr = addr.substring(1);
       }
-      System.out.println(addr);
       segShowNum(Integer.parseInt(addr));
     }
   }
@@ -60,10 +57,16 @@ public class ShowIpBy7Seg {
 
     seg_ctr.showDigit(n3);
     Thread.sleep(1000);
+    seg_ctr.clear();
+    Thread.sleep(100);
     seg_ctr.showDigit(n2);
     Thread.sleep(1000);
+    seg_ctr.clear();
+    Thread.sleep(100);
     seg_ctr.showDigitWithDp(n1);
     Thread.sleep(1000);
+    seg_ctr.clear();
+    Thread.sleep(100);
   }
 
   

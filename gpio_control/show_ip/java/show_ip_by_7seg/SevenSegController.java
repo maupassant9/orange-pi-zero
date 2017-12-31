@@ -24,4 +24,8 @@
     public void showDigitWithDp(int digit){
         showWithDp(digit);
     }
+
+    public void clear(){
+        init7Seg();
+    }
  }
