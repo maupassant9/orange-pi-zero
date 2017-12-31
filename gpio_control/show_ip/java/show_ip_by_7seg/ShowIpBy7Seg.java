@@ -39,22 +39,31 @@ public class ShowIpBy7Seg {
 
 
   private void segShowIp(String ip) throws InterruptedException{
-    String[] addrs = ip.split(".");
-    
+    String[] addrs = ip.split("\\.");
+    System.out.println("=======");
+    System.out.println(addrs.length);
+ 
     for (String addr: addrs){
+      if(addr.startsWith("/")){
+        addr = addr.substring(1);
+      }
+      System.out.println(addr);
       segShowNum(Integer.parseInt(addr));
     }
   }
 
-  private void segShowNum(int num)
+  private void segShowNum(int num) throws InterruptedException
   {
     int n1 = num % 10;
     int n2 = (num / 10) % 10;
     int n3 = (num / 100);
 
     seg_ctr.showDigit(n3);
+    Thread.sleep(1000);
     seg_ctr.showDigit(n2);
+    Thread.sleep(1000);
     seg_ctr.showDigitWithDp(n1);
+    Thread.sleep(1000);
   }
 
   
