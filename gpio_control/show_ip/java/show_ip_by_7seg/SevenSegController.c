@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_SevenSegController_showWithDp
  * Method:    clear
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_SevenSegController_init7Seg
+JNIEXPORT void JNICALL Java_SevenSegController_clear
   (JNIEnv * ptr_jni, jobject obj_java){
       Drv7SegClear(&handle);
   }
