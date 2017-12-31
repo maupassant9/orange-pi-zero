@@ -5,6 +5,7 @@
  *
  * Change Records:
  *      >> (29/Dec/2017): Creation of file
+ *      >> (30/Dec/2017): Finished the driver
  *
  */
  
@@ -16,13 +17,25 @@
   #include "74HC595.h"
   
 
-            
-  //extern hc595_handle_t handle;
-
+ /********************************************
+  * Internal Function Declaration
+  ********************************************/
   static void Hc595GpioWrite(unsigned char pin_number, unsigned char val);
   static void Hc595GpiosWriteAll(hc595_handle_t * handle, unsigned char val);
   static  void Hc595Wait(unsigned char mini_seg);
 
+ /********************************************
+  * Internal Types and Variables
+  ********************************************/
+
+ /********************************************
+  * External Variables
+  ********************************************/
+
+
+ /********************************************
+  * Functions
+  ********************************************/
   /*------------------------------------------------
    * Drv595Init();
    * Initialize the 74HC595 Device.
@@ -116,8 +129,8 @@
     *           Bit4: GPIO_OE
     * Check the waveform in /waveform/write.png
     * Paras:
+    *  >> hc595_handle_t: a handle for 74HC595 dev
     *  >> unsigned char: a valor write to gpio
-    
     * Return:
     *  >> 
     * Change Records:
