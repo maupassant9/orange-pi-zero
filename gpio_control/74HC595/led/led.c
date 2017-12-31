@@ -12,11 +12,17 @@
   * Include
   ********************************************/
   #include "../74HC595.h"
-  
+  #include "unistd.h"
   
   void main()
   {
       hc595_handle_t handle; 
       DrvHc595Init(&handle);
-      DrvHc595Write(&handle, 0xff);
+      while(1){
+      	DrvHc595Write(&handle, 0x40);
+      	sleep(1);
+      	DrvHc595Write(&handle, 0x00);
+      	sleep(1);
+      }
+      
   }

@@ -12,13 +12,16 @@
   * Include
   ********************************************/
   #include <wiringPi.h>
-  #include <time.h>
-    
-  extern hc595_handle_t handle;
+  #include <unistd.h>
+  #include "74HC595.h"
+  
+
+            
+  //extern hc595_handle_t handle;
 
   static void Hc595GpioWrite(unsigned char pin_number, unsigned char val);
   static void Hc595GpiosWriteAll(hc595_handle_t * handle, unsigned char val);
-
+  static  void Hc595Wait(unsigned char mini_seg);
 
   /*------------------------------------------------
    * Drv595Init();
@@ -34,22 +37,22 @@
    {
        unsigned char cnt, ser = DEFAULT_VALUE;
 
-        handle.pins_number[0] = SER_PIN;
-        handle.pins_number[1] = SRCLK_PIN;
-        handle.pins_number[2] = RCLK_PIN;
-        handle.pins_number[3] = SRCLR_PIN;
-        handle.pins_number[4] = OE_PIN;
+        handle->pins_number[0] = SER_PIN;
+        handle->pins_number[1] = SRCLK_PIN;
+        handle->pins_number[2] = RCLK_PIN;
+        handle->pins_number[3] = SRCLR_PIN;
+        handle->pins_number[4] = OE_PIN;
 
         wiringPiSetup();
         for(cnt = 0; cnt < 5; cnt++){
-            pinMode(handle.pins_number[cnt],OUTPUT);
+            pinMode(handle->pins_number[cnt],OUTPUT);
         }
        //Reset the 74HC595 into default mode
         Hc595GpiosWriteAll(handle,0x18|ser);
         Hc595GpiosWriteAll(handle,0x18|ser);
         Hc595GpiosWriteAll(handle,0x10|ser);
         Hc595GpiosWriteAll(handle,0x0c|ser);
-        #if DEFAULT_VALUE = HIGH_VOLT
+        #if DEFAULT_VALUE == HIGH_VOLT
         DrvHc595Write(handle,0xff);
         #endif
    }
@@ -73,7 +76,7 @@
     {
         unsigned char cnt = 0;
         for(;cnt < 5; cnt++){
-            GpioWrite(handle->pins_number[cnt], val&0x01);
+            Hc595GpioWrite(handle->pins_number[cnt], val&0x01);
             val = val >> 1;
         }
         //wait for one freq
@@ -146,7 +149,7 @@
      * Change Records:
      *  >> (30/Dec/2017): Create the function
      *----------------------------------------------*/
-     void Hc595Wait(unsigned char mini_seg)
+     static  void Hc595Wait(unsigned char mini_seg)
      {
      	usleep((long)mini_seg*1000);
      }
