@@ -67,6 +67,8 @@
         Hc595GpiosWriteAll(handle,0x0c|ser);
         #if DEFAULT_VALUE == HIGH_VOLT
         DrvHc595Write(handle,0xff);
+        #elif DEFAULT_VALUE == LOW_VOLT
+        DrvHc595Write(handle,0x00);
         #endif
    }
    

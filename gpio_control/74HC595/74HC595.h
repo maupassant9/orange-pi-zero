@@ -29,7 +29,7 @@
  //Define the default value of 74HC545 output
  #define HIGH_VOLT 1
  #define LOW_VOLT 0
- #define DEFAULT_VALUE LOW_VOLT
+ #define DEFAULT_VALUE HIGH_VOLT
  
  /********************************************
  * Type definition
