@@ -10,16 +10,15 @@
     public SevenSegController(){
         //load the led c module
         //led_ctr_c = new LedCtrInC(this.gpio_addr);
-        System.load("/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/7SegController.so");
+        String f_route = "/home/dary/Git-Repositorio/orange-pi-zero/"+
+                          "gpio_control/show_ip/java/show_ip_by_7seg/";
+        System.load(f_route+"SevenSegController.so");
         //set the gpio to output
+        init7Seg();
     }
 
     public void showDigit(int digit){
         show(digit);
-    }
-
-    public void init(){
-        init7Seg();
     }
 
     public void showDigitWithDp(int digit){
