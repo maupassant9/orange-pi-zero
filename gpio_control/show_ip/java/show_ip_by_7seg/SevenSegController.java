@@ -1,13 +1,13 @@
 /*
  * Java interface for led wiringOP */
 
- public class 7SegController{
+ public class SevenSegController{
 
     public native void init7Seg();
     public native void show(int digit);
     public native void showWithDp(int digit);
 
-    public 7SegController(){
+    public SevenSegController(){
         //load the led c module
         //led_ctr_c = new LedCtrInC(this.gpio_addr);
         System.load("/home/dary/Git-Repositorio/orange-pi-zero/gpio_control/show_ip/java/show_ip_by_led/7SegController.so");
