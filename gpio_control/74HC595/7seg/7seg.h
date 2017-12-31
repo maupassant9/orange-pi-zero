@@ -18,6 +18,8 @@
 *
 */
 
+#ifndef _7SEG_H
+#define _7SEG_H
 /********************************************
  * Include
  ********************************************/
@@ -39,16 +41,16 @@
 // codes_number[10] = '.' code
 const unsigned char codes_number[11] = {
     0x81, //'0': B,C,D,E,F,G = 0; 10000001b
-    0xf3, //'1': C,D = 0; 11110011b
-    0x49, //'2': B,C,E,F,H = 0; 01001001b
-    0x61, //'3': B,C,D,E,H = 0; 01100001
-    0x33, //'4': C,D,G,H = 0; 00110011b
-    0x25, //'5': B,D,E,G,H = 0; 00100101b
-    0x05, //'6': B,D,E,F,G,H = 0; 00000101b
-    0xf1, //'7': B,C,D = 0; 11110001b
-    0x01, //'8': B,C,D,E,F,G,H = 0; 00000001b
-    0x21, //'9': B,C,D,E,G,H = 0; 00100001b
-    0xfe //'.': 11111110b
+    0xcf, //'1': C,D = 0; 11001111b
+    0x92, //'2': B,C,E,F,H = 0; 10010010b
+    0x86, //'3': B,C,D,E,H = 0; 10000110b
+    0xcc, //'4': C,D,G,H = 0; 11001100b
+    0xa4, //'5': B,D,E,G,H = 0; 10100100b
+    0xa0, //'6': B,D,E,F,G,H = 0; 10100000b
+    0x8f, //'7': B,C,D = 0; 10001111b
+    0x80, //'8': B,C,D,E,F,G,H = 0; 10000000b
+    0x84, //'9': B,C,D,E,G,H = 0; 10000100b
+    0x7f //'.': 01111111b
 };
 
 /********************************************
@@ -100,4 +102,7 @@ const unsigned char codes_number[11] = {
    * Change Records:
    *  >> (30/Dec/2017): Create the function
    *----------------------------------------------*/
-   void Drv7SegDisp(hc595_handle_t *handle, unsigned char num);
+   void Drv7SegDispWithDp(hc595_handle_t *handle, unsigned char num);
+
+
+#endif

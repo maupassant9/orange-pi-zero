@@ -35,7 +35,7 @@
  /********************************************
   * External Variables
   ********************************************/
-extern const unsigned char codes_number[];
+extern const unsigned char codes_number[11];
 
  /********************************************
   * Functions
@@ -85,6 +85,6 @@ extern const unsigned char codes_number[];
    * Change Records:
    *  >> (30/Dec/2017): Create the function
    *----------------------------------------------*/
-   void Drv7SegDisp(hc595_handle_t *handle, unsigned char num){
-       DrvHc595Write(handle, (codes_number[num]&codes_num[10]);
+   void Drv7SegDispWithDp(hc595_handle_t *handle, unsigned char num){
+       DrvHc595Write(handle, codes_number[num]&codes_number[10]);
    }

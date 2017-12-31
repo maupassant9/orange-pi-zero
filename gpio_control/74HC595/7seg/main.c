@@ -44,13 +44,13 @@
   ********************************************/
   void main(void)
   {
-      int i = 0;
+      int i = 2;
       hc595_handle_t handle;
 
       Drv7SegInit(&handle);
       while(1){
-          Drv7SegDisp(i);
+          Drv7SegDisp(&handle,i);
           i = (++i)%10;
-          sleep(2);
+          sleep(1);
       }
   }

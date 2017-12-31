@@ -8,6 +8,8 @@
 *
 */
 
+#ifndef  _74HC595_H
+#define _74HC595_H
 /********************************************
  * Include
  ********************************************/
@@ -81,3 +83,4 @@ void DrvHc595Init(hc595_handle_t *handle);
 void DrvHc595Write(hc595_handle_t * handle,unsigned char val);
 
 
+#endif
