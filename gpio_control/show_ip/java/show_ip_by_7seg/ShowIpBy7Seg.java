@@ -57,15 +57,15 @@ public class ShowIpBy7Seg {
 
     seg_ctr.showDigit(n3);
     Thread.sleep(1000);
-    seg_ctr.clear();
+    seg_ctr.clr();
     Thread.sleep(100);
     seg_ctr.showDigit(n2);
     Thread.sleep(1000);
-    seg_ctr.clear();
+    seg_ctr.clr();
     Thread.sleep(100);
     seg_ctr.showDigitWithDp(n1);
     Thread.sleep(1000);
-    seg_ctr.clear();
+    seg_ctr.clr();
     Thread.sleep(100);
   }
 

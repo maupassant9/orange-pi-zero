@@ -6,6 +6,7 @@
     public native void init7Seg();
     public native void show(int digit);
     public native void showWithDp(int digit);
+    public native void clear();
 
     public SevenSegController(){
         //load the led c module
@@ -25,7 +26,7 @@
         showWithDp(digit);
     }
 
-    public void clear(){
-        init7Seg();
+    public void clr(){
+        clear();
     }
  }

@@ -88,3 +88,17 @@ extern const unsigned char codes_number[11];
    void Drv7SegDispWithDp(hc595_handle_t *handle, unsigned char num){
        DrvHc595Write(handle, codes_number[num]&codes_number[10]);
    }
+
+  /*------------------------------------------------
+   * Drv7SegClear();
+   * Clear the display.
+   * Paras:
+   *  >> hc595_handle_t*: a handle pointer to 74Hc595
+   * Return:
+   *  >> 
+   * Change Records:
+   *  >> (30/Dec/2017): Create the function
+   *----------------------------------------------*/
+   void Drv7SegClear(hc595_handle_t *handle){
+       DrvHc595Clear(handle);
+   }

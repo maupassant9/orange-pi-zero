@@ -31,6 +31,14 @@ JNIEXPORT void JNICALL Java_SevenSegController_show
 JNIEXPORT void JNICALL Java_SevenSegController_showWithDp
   (JNIEnv *, jobject, jint);
 
+/*
+ * Class:     SevenSegController
+ * Method:    init7Seg
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_SevenSegController_clear
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

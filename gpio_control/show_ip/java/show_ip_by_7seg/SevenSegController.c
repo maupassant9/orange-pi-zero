@@ -34,3 +34,12 @@ JNIEXPORT void JNICALL Java_SevenSegController_showWithDp
       Drv7SegDispWithDp(&handle,digit);
   }
 
+/*
+ * Class:     SevenSegController
+ * Method:    clear
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_SevenSegController_init7Seg
+  (JNIEnv * ptr_jni, jobject obj_java){
+      Drv7SegClear(&handle);
+  }

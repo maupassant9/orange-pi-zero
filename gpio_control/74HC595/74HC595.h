@@ -95,4 +95,16 @@ void DrvHc595Write(hc595_handle_t * handle,unsigned char val);
     *----------------------------------------------*/
     void DrvHc595Clear(hc595_handle_t * handle);
 
+  /*------------------------------------------------
+   * Drv7SegClear();
+   * Clear the display.
+   * Paras:
+   *  >> hc595_handle_t*: a handle pointer to 74Hc595
+   * Return:
+   *  >> 
+   * Change Records:
+   *  >> (30/Dec/2017): Create the function
+   *----------------------------------------------*/
+   void Drv7SegClear(hc595_handle_t *handle);
+
 #endif
